@@ -23,7 +23,7 @@ public class Teoria1 {
 		}
 		else {
 			System.out.println("El directorio " + DIR_CONFIG + " no existe.");
-			dirConfig.mkdir(); // Y con esto lo creamos en linux
+			dirConfig.mkdirs(); // Y con esto lo creamos en linux
 			System.out.println("Creando directorio " + DIR_CONFIG + ".");
 		}
 		
