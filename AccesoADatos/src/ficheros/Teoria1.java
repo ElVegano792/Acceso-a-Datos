@@ -6,6 +6,7 @@ public class Teoria1 {
 	
 	//private static final String DIR_CONFIG = "DAM2/martin";
 	private static final String DIR_CONFIG = "DAM2"; // Solo puede crear un directorio a la vez, se puede spamear para crearlo todo
+	//private static final String DIR_CONFIG = "DAM2"+File.separator+"martin"; // Con esto nos aseguramos de que se pueda hacer tanto en linux como en windows
 	
 	public static void main(String[] args) {	
 		
