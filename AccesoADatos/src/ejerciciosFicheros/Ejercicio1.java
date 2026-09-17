@@ -11,7 +11,6 @@ public class Ejercicio1 {
 		String ficheroPersonajes = "/home/alumno/personajes.txt";
 		String ficheroAnimes = "/home/alumno/animes.txt";
 		
-//		ArrayList<String> listaPersonajes = new ArrayList<>();
 		ArrayList<String> animeNaruto = new ArrayList<>();
 		ArrayList<String> animeDan = new ArrayList<>();
 		ArrayList<String> animeDemon = new ArrayList<>();
@@ -27,14 +26,11 @@ public class Ejercicio1 {
 			BufferedReader lector2 = new BufferedReader(archivo2);
 			
 			String linea = lector.readLine();
-//			String linea1 = lector2.readLine();
 			
 			do {
-//				linea = lector.readLine();
 
 				String personaje = "";
 				String[] linea2 = linea.split(" ");
-//				String[] linea3 = linea1.split(" ");
 				
 				for(int i=1;i<linea2.length;i++) {
 					personaje+=linea2[i] + " ";
@@ -54,7 +50,6 @@ public class Ejercicio1 {
 					animeNulo.add(personaje);
 				
 				linea = lector.readLine();
-//				linea1 = lector2.readLine();
 			} while(linea != null);
 			
 			if(animeNaruto.size() >= 1) {
