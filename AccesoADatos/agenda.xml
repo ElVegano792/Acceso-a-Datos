@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<agenda>
+    <contacto>
+        <nombre>José María</nombre>
+        <telefono>6598473215</telefono>
+    </contacto>
+    <contacto>
+        <nombre>Rosa Melano</nombre>
+        <telefono>4659756786</telefono>
+    </contacto>
+</agenda>
