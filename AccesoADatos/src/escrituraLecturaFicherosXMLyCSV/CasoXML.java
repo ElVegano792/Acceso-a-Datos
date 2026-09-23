@@ -54,7 +54,7 @@ public class CasoXML {
 		ArrayList<String> listas = new ArrayList<>();
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
-		Document doc = builder.parse(fichero);
+		Document doc = builder.parse(fichero); // En este paso el fichero se cierra y cualquier cambio efectuado no queda reflejado en el XML
 		
 		NodeList listaContactos = doc.getElementsByTagName("contacto");
 		int contador = 0;
