@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -24,6 +25,8 @@ public class CasoXML {
 		eliminarContacto(fichero, "Rosa Melano");
 		eliminarContacto(fichero, "Pepito Perez");
 		buscarContacto(fichero, "Rosa Melano");
+		grabarContacto(fichero, "Pepe Fuentes", "659875691");
+		grabarContacto(fichero, "José María", "468436587");
 		
 	}
 	
@@ -88,10 +91,8 @@ public class CasoXML {
 	}
 	
 	public static void eliminarContacto(String fichero,String nombre) throws Exception {
-		ArrayList<String> listas = new ArrayList<>();
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder builder = factory.newDocumentBuilder();
-		Document doc = builder.parse(fichero);
+		
+		Document doc = leerXML(fichero);
 		
 		NodeList listaContactos = doc.getElementsByTagName("contacto");
 		int contador = 0;
@@ -110,19 +111,72 @@ public class CasoXML {
 				Element raiz = doc.getDocumentElement();
 				raiz.removeChild(contacto);
 				System.out.println("¡Contaco eliminado correctamente!");
-
-				TransformerFactory transformerFactory = TransformerFactory.newInstance();
-				Transformer transformer = transformerFactory.newTransformer();
-				transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-				transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-				DOMSource source = new DOMSource(doc);
-				StreamResult result = new StreamResult(fichero);
-				transformer.transform(source, result);
+				grabarXML(doc,fichero);
 			}
 			
 		}
 		if(encontrado == false) {
 			System.out.println("El contacto " + nombre + " no se ha podido eliminar debido a que no existe.");
+		}
+		
+	}
+	
+	public static Document leerXML(String fichero) throws Exception {
+		
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		return builder.parse(fichero);
+		
+	}
+	
+	public static void grabarXML(Document doc, String fichero) throws Exception{
+		
+
+		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		Transformer transformer = transformerFactory.newTransformer();
+		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+		transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+		DOMSource source = new DOMSource(doc);
+		StreamResult result = new StreamResult(fichero);
+		transformer.transform(source, result);
+		
+	}
+	
+	public static void grabarContacto(String fichero, String nombreNuevo, String numeroNuevo) throws Exception{
+		
+		Document doc = leerXML(fichero);
+		
+		NodeList listaContactos = doc.getElementsByTagName("contacto");
+		
+		boolean encontrado = false;
+		for(int i=0;i<listaContactos.getLength() && encontrado == false;i++) {
+			
+			Node nodo = listaContactos.item(i);
+			Element contacto = (Element)nodo;
+			 
+			String nombre1 = contacto.getElementsByTagName("nombre").item(0).getTextContent();
+			String telefono = contacto.getElementsByTagName("telefono").item(0).getTextContent();
+			
+			if(nombreNuevo.equalsIgnoreCase(nombre1)) {
+				encontrado = true;
+				
+			}
+			
+		}
+		if(encontrado == true) {
+			System.out.println("Ya existe un contacto llamado " + nombreNuevo);
+		} else {
+			Element nuevoContacto = doc.createElement("contacto");
+			Element elementoNombre = doc.createElement("nombre");
+			Element elementoTelefono = doc.createElement("telefono");
+			elementoNombre.setTextContent(nombreNuevo);
+			elementoTelefono.setTextContent(numeroNuevo);
+			nuevoContacto.appendChild(elementoNombre);
+			nuevoContacto.appendChild(elementoTelefono);
+			Element raiz = doc.getDocumentElement();
+			raiz.appendChild(nuevoContacto);
+			grabarXML(doc, fichero);
+			System.out.printf("¡%s grabado con éxito!\n",nombreNuevo);
 		}
 		
 	}
