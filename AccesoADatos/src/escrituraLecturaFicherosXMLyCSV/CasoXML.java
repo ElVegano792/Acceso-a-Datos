@@ -1,5 +1,6 @@
 package escrituraLecturaFicherosXMLyCSV;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -12,6 +13,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.*; // esto es para cargar la estructura de los XML
+import org.xml.sax.SAXException;
 
 public class CasoXML {
 
@@ -62,7 +64,7 @@ public class CasoXML {
 	}
 	
 	public static void buscarContacto(String fichero,String nombre) throws Exception {
-		ArrayList<String> listas = new ArrayList<>();
+		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		Document doc = builder.parse(fichero); // En este paso el fichero se cierra y cualquier cambio efectuado no queda reflejado en el XML
@@ -177,6 +179,38 @@ public class CasoXML {
 			raiz.appendChild(nuevoContacto);
 			grabarXML(doc, fichero);
 			System.out.printf("¡%s grabado con éxito!\n",nombreNuevo);
+		}
+		
+	}
+	
+	public static void modificarTelefono(String fichero, String nombre, String nuevoTelefono) throws Exception{
+		
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document doc = builder.parse(fichero); // En este paso el fichero se cierra y cualquier cambio efectuado no queda reflejado en el XML
+		
+		NodeList listaContactos = doc.getElementsByTagName("contacto");
+		int contador = 0;
+		boolean encontrado = false;
+		for(int i=0;i<listaContactos.getLength() && encontrado == false;i++) {
+			
+			Node nodo = listaContactos.item(i);
+			Element contacto = (Element)nodo;
+			
+			if(nombre.equalsIgnoreCase(nombre)) {
+				encontrado = true;
+				
+				Element telefono = (Element)contacto.getElementsByTagName("telefono").item(0);
+				telefono.setTextContent(nuevoTelefono);
+				
+				
+				grabarXML(doc,fichero);
+				System.out.printf("Teléfono modificado en el contacto %s\n",nombre);
+			}
+			
+		}
+		if(encontrado == false) {
+			System.out.println("No tienes nigún contacto que se llame " + nombre);
 		}
 		
 	}
