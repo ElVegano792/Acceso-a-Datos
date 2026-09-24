@@ -106,7 +106,7 @@ public class CasoXML {
 			
 			if(nombre.equalsIgnoreCase(nombre1)) {
 				encontrado = true;
-				// Para borrar de un XML hay que borrarlo y luego guardarlo debido a que todos los cambios se realizan en memoria, no en el propio archivo
+				// TODO Para borrar de un XML hay que borrarlo y luego guardarlo debido a que todos los cambios se realizan en memoria, no en el propio archivo
 				Element raiz = doc.getDocumentElement();
 				raiz.removeChild(contacto);
 				System.out.println("¡Contaco eliminado correctamente!");
