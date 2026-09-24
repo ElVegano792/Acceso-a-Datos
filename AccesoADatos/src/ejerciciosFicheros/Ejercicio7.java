@@ -24,6 +24,18 @@ public class Ejercicio7 {
 				System.out.printf("Satélite ID: %d | Posición: (%.4f, %.4f) | Estado: %s \n",id,latitud,longitud,estado);
 			}
 			
+			// Vv Con esto tendríamos un bucle infinito que seguiría hasta encontrarse una excepción vV
+//			while(true) {
+//				int id = fichero.readInt();
+//				float latitud = fichero.readFloat();
+//				float longitud = fichero.readFloat();
+//				String estado = "";
+//				for (int j=0;j<4;j++) {
+//					estado+=fichero.readChar();
+//				}
+//				System.out.printf("Satélite ID: %d | Posición: (%.4f, %.4f) | Estado: %s \n",id,latitud,longitud,estado);
+//			}
+			
 		} catch (Exception e) {
 			System.out.println("Error al leer el fichero.");
 		}
