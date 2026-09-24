@@ -1,6 +1,7 @@
 package ejerciciosFicheros;
 
 import java.io.DataInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 
 public class Ejercicio7 {
@@ -10,8 +11,11 @@ public class Ejercicio7 {
 	
 	public static void main(String[] args) {
 		final int NUM_REGISTROS = 3;
+//		final int TAMAÑO_REGISTRO = 20;
 		try(DataInputStream fichero = new DataInputStream(new FileInputStream(ruta))){
 			
+//			File ficheroFisico = new File(ruta);
+//			final int NUM_REGISTROS1 = (int)ficheroFisico.length()/TAMAÑO_REGISTRO;
 			System.out.println("SATELITES Y COORDENADAS");
 			for(int i = 0;i< NUM_REGISTROS;i++) {
 				int id = fichero.readInt();
