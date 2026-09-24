@@ -203,7 +203,6 @@ public class CasoXML {
 				Element telefono = (Element)contacto.getElementsByTagName("telefono").item(0);
 				telefono.setTextContent(nuevoTelefono);
 				
-				
 				grabarXML(doc,fichero);
 				System.out.printf("Teléfono modificado en el contacto %s\n",nombre);
 			}
