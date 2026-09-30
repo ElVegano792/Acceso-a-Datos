@@ -33,4 +33,8 @@ public class CasoJSON {
 		
 	}
 	
+	public static void cargarListaContactos(String fichero) {
+		List<ContactoJSON> contactos = null;
+	}
+	
 }
