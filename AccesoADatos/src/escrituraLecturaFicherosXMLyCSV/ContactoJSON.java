@@ -14,4 +14,11 @@ public class ContactoJSON {
 		
 	}
 	
+	public void mostrar() {
+		System.out.println("Nombre: " + this.nombre);
+		System.out.println("Telefono" + this.telefono);
+		System.out.println("DNI: " + this.dni);
+		System.out.println();
+	}
+	
 }
