@@ -1,8 +1,10 @@
 {
  "agenda": [
  {"nombre": "Juan Perez",
- "telefono": "600111222"},
+ "telefono": "600111222",
+  "dni": "46597443X"},
  {"nombre": "Maria Lopez",
- "telefono": "600333444"}
+ "telefono": "600333444",
+ "dni": "46597443X"}
  ]
 }
