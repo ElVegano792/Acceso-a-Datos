@@ -92,6 +92,22 @@ public class CasoXML {
 		
 	}
 	
+	public static void buscarEnAgenda(String fichero,String nombre) throws Exception {
+		
+		Document doc = leerXML(fichero);
+		
+		Element contacto = buscarConctacto(nombre, doc);
+		
+		boolean encontrado = false;
+			
+		if(contacto!=null) {
+			String telefono = contacto.getElementsByTagName("telefono").item(0).getTextContent();
+			System.out.println("El telefono de " + nombre + " es " + telefono);
+		} else
+			System.out.println("El contacto " + nombre + " no existe.");
+		
+	}
+	
 	public static void eliminarContacto(String fichero,String nombre) throws Exception {
 		
 		Document doc = leerXML(fichero);
@@ -119,6 +135,21 @@ public class CasoXML {
 		}
 		if(encontrado == false) {
 			System.out.println("El contacto " + nombre + " no se ha podido eliminar debido a que no existe.");
+		}
+		
+	}
+	
+	public static void eliminarContacto2(String fichero, String nombre) throws Exception {
+		
+		Document doc = leerXML(fichero);
+		Element contacto = buscarConctacto(nombre, doc);
+		if(contacto!=null) {
+			Element raiz = doc.getDocumentElement();
+			raiz.removeChild(contacto);
+			System.out.println("¡Contaco eliminado correctamente!");
+			grabarXML(doc,fichero);
+		} else {
+			System.out.println("El contacto " + nombre + " no existe.");
 		}
 		
 	}
@@ -183,6 +214,14 @@ public class CasoXML {
 		
 	}
 	
+	public static void nuevoContacto(String nombreNuevo, String telefonoNuevo, String fichero) throws Exception{
+		
+		Document doc = leerXML(fichero);
+		Element contacto = buscarConctacto(nombreNuevo,doc);
+		
+		
+	}
+	
 	public static void modificarTelefono(String fichero, String nombre, String nuevoTelefono) throws Exception{
 		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -212,6 +251,32 @@ public class CasoXML {
 			System.out.println("No tienes nigún contacto que se llame " + nombre);
 		}
 		
+	}
+	
+	public static void modificarTelefono1(String nombreBuscado,String nuevoTelefono,String fichero) throws Exception{
+		
+		Document doc = leerXML(fichero);
+		Element contacto = buscarConctacto(nombreBuscado,doc);
+		if(contacto!=null) {
+			Element telefono = (Element)contacto.getElementsByTagName("nombre");
+		}
+		
+	}
+	
+	public static Element buscarConctacto(String nombreBuscado,Document doc) throws Exception{
+		
+		Element respuesta = null;
+		
+		NodeList listaContactos = doc.getElementsByTagName(nombreBuscado);
+		for(int i=0;i<listaContactos.getLength() && respuesta == null;i++) {
+			Node nodo = listaContactos.item(i);
+			Element contacto = (Element)nodo;
+			String nombre = contacto.getElementsByTagName("nombre").item(0).getTextContent();
+			if(nombre.equalsIgnoreCase(nombreBuscado))
+				respuesta = contacto;
+		}
+		
+		return respuesta;
 	}
 	
 }
