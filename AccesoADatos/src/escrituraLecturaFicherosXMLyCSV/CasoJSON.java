@@ -96,6 +96,15 @@ public class CasoJSON {
 	public static ContactoJSON buscarContacto(String nombre, String fichero) {
 		ContactoJSON contacto = null;
 		
+		List<ContactoJSON> contactos = cargarListaContactos(fichero);
+		if(contactos!=null) {
+			for(ContactoJSON c:contactos) {
+				if(c.getNombre().equalsIgnoreCase(nombre)) {
+					contacto = c;
+				}
+			}
+		}
+		
 		return contacto;
 	}
 	
