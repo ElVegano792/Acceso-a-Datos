@@ -13,4 +13,8 @@ public class AgendaJSON {
 		return contactos;
 	}
 	
+	public void setContactos(List<ContactoJSON> contactos) {
+		this.contactos = contactos;
+	}
+	
 }
