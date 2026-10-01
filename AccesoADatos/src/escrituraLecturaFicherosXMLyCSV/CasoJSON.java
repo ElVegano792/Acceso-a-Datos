@@ -93,4 +93,32 @@ public class CasoJSON {
 		
 	}
 	
+	public static ContactoJSON buscarContacto(String nombre, String fichero) {
+		ContactoJSON contacto = null;
+		
+		return contacto;
+	}
+	
+	public static void borrarContacto(String nombre, String fichero) {
+		
+		List<ContactoJSON> contactos = cargarListaContactos(fichero);
+		if(contactos!=null) {
+			ContactoJSON encontrado = buscarContacto(nombre, fichero);
+			contactos.remove(encontrado);
+			guardarAgenda(contactos, fichero);
+			System.out.println("¡Contacto eliminado con éxito!");
+		}
+		
+	}
+	
+	public static void modificarTelefono(String nombre, String telefono, String fichero) {
+		
+		List<ContactoJSON> contactos = cargarListaContactos(fichero);
+		
+		if(contactos!=null) {
+			
+		}
+		
+	}
+	
 }
