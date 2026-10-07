@@ -10,7 +10,7 @@
         
         <telefono>6598473215</telefono>
                     
-    
+    	<tipo>fijo</tipo>
     </contacto>
             
 
@@ -18,5 +18,19 @@
     <contacto>
         <nombre>Pepe Fuentes</nombre>
         <telefono>659875691</telefono>
+        <tipo>movil</tipo>
+    </contacto>
+    <contacto>
+    	<nombre>Leonor</nombre>
+    	<telefono>568466568</telefono>
+    	<telefono>416398487</telefono>
+    	<tipo>fijo</tipo>
+    </contacto>
+    <contacto>
+    	<nombre>Leticia Sabater</nombre>
+    	<telefono>564168974</telefono>
+    	<telefono>698745689</telefono>
+    	<telefono>636486952</telefono>
+    	<tipo>movil</tipo>
     </contacto>
 </agenda>
