@@ -8,16 +8,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-//@Table(name = "productos")
+@Table(name = "productos")
 public class Producto {
 
 	@Id // Id es para marcar la clave primaria de la tabla
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	// @Column(name = "producto", length = 100, nullable = false, unique = true)
+	@Column(name = "producto", length = 100, nullable = false, unique = true)
 	private String nombre;
 
-	// @Column(nullable = false)
+	@Column(nullable = false)
 	private double precio;
 
 	// JPA exige siempre un constructor sin argumentos
