@@ -20,7 +20,8 @@ public class Main {
 //		mostrarAlumnos();
 //		buscarPorDNI("X12");
 //		buscarPorNombre("Martin");
-		buscarPorRangoEdad(19, 22);
+//		buscarPorRangoEdad(19, 22);
+		cambiarEdad("65962348Y", 18);
 
 	}
 
@@ -161,6 +162,30 @@ public class Main {
 			}
 			System.out.println("-----------------");
 			System.out.println("Total alumnos: " + lista.size());
+		} catch (Exception error) {
+			System.out.println("Error: " + error.getMessage());
+			em.getTransaction().rollback();
+		}
+		em.close();
+		emf.close();
+		
+	}
+	
+	// PNDT TERMINAR
+	public static void cambiarEdad(String d,int eNueva) {
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clasePU");
+		EntityManager em = emf.createEntityManager();
+		try {
+			em.getTransaction().begin();
+			String jpql = "UPDATE Alumno a SET a.edad = ?1 WHERE a.dni = ?2";
+			List<Alumno> lista = em.createQuery(jpql, Alumno.class)
+					.setParameter(1, eNueva)
+					.setParameter(2, d)
+					.getResultList();
+			
+			em.getTransaction().commit();
+			System.out.println("Edad de " + lista.get(0).getNombre() + " cambiada a " + eNueva);
 		} catch (Exception error) {
 			System.out.println("Error: " + error.getMessage());
 			em.getTransaction().rollback();

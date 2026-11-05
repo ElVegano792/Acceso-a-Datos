@@ -54,6 +54,15 @@ public class Alumno {
 	public double getMatricula() {
 		return matricula;
 	}
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
 	
 	@Override
 	public String toString() {
