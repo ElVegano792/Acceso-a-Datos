@@ -48,4 +48,8 @@ public class Producto {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	@Override
+	public String toString() {
+	 return "(" + id +") - Nombre: " + nombre + "\n Precio: " + precio + "€\n";
+	}
 }
