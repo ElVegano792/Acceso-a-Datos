@@ -12,8 +12,6 @@ import jakarta.persistence.Table;
 public class Alumno {
 	
 	@Id // Id es para marcar la clave primaria de la tabla
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 	@Column(name = "dni", length = 9, nullable = false, unique = true)
 	private String dni;
 
@@ -59,7 +57,7 @@ public class Alumno {
 	
 	@Override
 	public String toString() {
-	 return dni + "| " + apellidos + ", " + nombre + " | " + edad + " | " + matricula;
+	 return "DNI: " + dni + " | " + apellidos + ", " + nombre + " | Edad: " + edad + " | Matrícula: " + matricula;
 	}
 	
 }

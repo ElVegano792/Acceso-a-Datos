@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 public class Producto {
 
 	@Id // Id es para marcar la clave primaria de la tabla
+	// El @GeneratedValue es como un autoincrement en el caso de que la PK no la introduzcas tú a mano
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(name = "producto", length = 100, nullable = false, unique = true)
