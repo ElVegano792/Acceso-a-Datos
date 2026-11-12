@@ -36,15 +36,17 @@
 				<groupId>org.hibernate.tool</groupId>
 				<artifactId>hibernate-tools-maven</artifactId>
 				<version>6.5.2.Final</version>
-				<executions>
-					<execution> <!-- Crea las entidades automáticamente, pero no se pueden sobreescribir -->
+				<!-- Crea las entidades automáticamente, pero no se pueden sobreescribir -->
+				<!-- 
+					<executions>
+					<execution>
 						<id>generate-entities</id>
 						<phase>generate-sources</phase>
-						<goals>
+						<goal>
 							<goal>hbm2java</goal>
 						</goals>
 					</execution>
-				</executions>
+				</executions> -->				
 				<configuration>
 					<!-- En este directorio se dejaran las clases que se generen -->
 					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
@@ -58,8 +60,8 @@
 				</hibernate.connection.driver_class>
 						<!-- Datos de conexión a la base de datos -->
 						<hibernate.connection.url>jdbc:mariadb://localhost:3306/naciones</hibernate.connection.url>
-						<hibernate.connection.username>profe</hibernate.connection.username>
-						<hibernate.connection.password>abc123</hibernate.connection.password>
+						<hibernate.connection.username>alumno</hibernate.connection.username>
+						<hibernate.connection.password>123</hibernate.connection.password>
 						<hibernate.dialect>org.hibernate.dialect.MariaDBDialect</hibernate.dialect>
 						<hibernate.default_catalog>naciones</hibernate.default_catalog>
 						<hibernate.default_schema>naciones</hibernate.default_schema>
