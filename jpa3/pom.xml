@@ -37,7 +37,7 @@
 				<artifactId>hibernate-tools-maven</artifactId>
 				<version>6.5.2.Final</version>
 				<executions>
-					<execution>
+					<execution> <!-- Crea las entidades automáticamente, pero no se pueden sobreescribir -->
 						<id>generate-entities</id>
 						<phase>generate-sources</phase>
 						<goals>
@@ -50,7 +50,7 @@
 					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
 					<!-- Y el paquete se llamará así: -->
 					<packageName>model</packageName>
-					<ejb3>true</ejb3>
+					<ejb3>true</ejb3> <!-- Con esto decimos que vamos a usar un hibernate moderno, es decir, con anotaciones -->
 					<jdk5>true</jdk5>
 					<properties>
 						<hibernate.connection.driver_class>
