@@ -18,7 +18,8 @@ public class Main {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clasePU");
 		EntityManager em = emf.createEntityManager();
 		try {
-			listadoNombresPaises(em);
+//			listadoNombresPaises(em);
+			verIdiomas(em,"Heard Island and McDonald Islands");
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
 		}
