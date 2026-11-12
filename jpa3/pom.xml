@@ -2,8 +2,7 @@
 	xmlns:xsi="http://w3.org"
 	xsi:schemaLocation="http://apache.org https://apache.org">
 	<modelVersion>4.0.0</modelVersion>
-	<!-- Debe de corresponderse con el group ID y artifact ID que hayas
-elegido tú -->
+	<!-- Debe de corresponderse con el group ID y artifact ID que hayas elegido tú -->
 	<groupId>jpaehibernate</groupId>
 	<artifactId>jpa3</artifactId>
 	<version>1.0-SNAPSHOT</version>
@@ -25,8 +24,7 @@ elegido tú -->
 			<version>6.5.2.Final</version>
 		</dependency>
 		<dependency>
-			<!-- No olvides cambiar esto si usas MySQL u otro gestor de bases de
-			datos -->
+			<!-- No olvides cambiar esto si usas MySQL u otro gestor de bases de datos -->
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
 			<version>3.3.3</version>
@@ -69,8 +67,7 @@ elegido tú -->
 				</configuration>
 				<dependencies>
 					<dependency>
-						<!-- No olvides cambiar esto si usas MySQL u
-otro gestor de bases de datos -->
+						<!-- No olvides cambiar esto si usas MySQL u otro gestor de bases de datos -->
 						<groupId>org.mariadb.jdbc</groupId>
 						<artifactId>mariadb-java-client</artifactId>
 						<version>3.3.3</version>
