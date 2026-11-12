@@ -1,0 +1,11 @@
+{
+  "name": "My Browser4 Plugin",
+  "version": "0.0.1-SNAPSHOT",
+  "sdkVersion": "4.13.7",
+  "description": "A Browser4 plugin that provides custom functionality",
+  "dependsOn": ["browser4-skeleton", "browser4-browser"],
+  "defaultEnabled": true,
+  "autoConfigurationClasses": [
+    "jpaehibernate.jpa3.config.PluginAutoConfiguration"
+  ]
+}
