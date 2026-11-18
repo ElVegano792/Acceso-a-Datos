@@ -35,7 +35,7 @@ public class Main {
 			System.out.println("No hay empleados");
 		else {
 			for (Object[] fila : listaEmpleados) {
-				System.out.println("Nombre: " + fila[0] + ", " + fila[1] + " Email: " + fila[2]);
+				System.out.println("Nombre: " + fila[1] + ", " + fila[0] + " | Email: " + fila[2]);
 			}
 		}
 	}
