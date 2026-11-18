@@ -1,7 +1,8 @@
 package jpa5;
 
 	import java.util.List;
-	import java.util.logging.Level;
+import java.util.Set;
+import java.util.logging.Level;
 	import java.util.logging.Logger;
 	import jakarta.persistence.EntityManager;
 	import jakarta.persistence.EntityManagerFactory;
@@ -17,22 +18,25 @@ package jpa5;
 	Persistence.createEntityManagerFactory("clasePU");
 	EntityManager em = emf.createEntityManager();
 	try {
-	listadoNombresPaises(em);
+		verEmpleados(em);
 	} catch (Exception e) {
-	System.out.println("Error: " + e.getMessage());
+		System.out.println("Error: " + e.getMessage());
 	}
 	em.close();
 	emf.close();
 	}
-	public static void listadoNombresPaises(EntityManager em){
-		String jpql = "SELECT e.firstName,e.lastName,e.email FROM Employees e";
-		
-		List<String> listaNombres = em.createQuery(jpql, String.class).getResultList();
-		System.out.println("Datos de empleados");
-		for (String nombre : listaNombres) {
-		System.out.println(nombre);
+	
+	public static void verEmpleados(EntityManager em) {
+		String jpql = "SELECT e.firstName, e.lastName, e.email FROM Employees e";
+		List<Object[]> listaEmpleados = em.createQuery(jpql, Object[].class).getResultList();
+
+		if (listaEmpleados.isEmpty())
+		    System.out.println("No hay empleados");
+		else {
+		    for (Object[] fila : listaEmpleados) {
+		        System.out.println("Nombre: " + fila[0] + ", " + fila[1] + " Email: " + fila[2]);
+		    }
 		}
-//		System.out.println("Total de paises: " + listaNombres.size());
-		}
+	}
 
 }
